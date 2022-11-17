@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="container-form">
+    <h3 class="txt_gris_medio">Acceder</h3>
+    <hr>
+    <div class="login-container">
+        {% if form.errors%}
+            <div class="alert alert-danger">
+                <p>Tu usuario y contraseña no coinciden. Por favor intenta nuevamente</p>
+            </div>
+            <form id="form-login" methodo="post" action="">
+                {% csrf_token %}
+
+                <div class="w450" id="username">
+                    {{form.username}}
+                </div>
+                <div class="w450" id="password">
+                    {{form.password}}
+                </div>
+                <button id="btn-registrar" class="button_large">Entrar</button>
+                <div class="clearfix"></div>
+            </form>
+            <a href="#" class="txt_verde text_center mt15 mb20" style="display: block">Aviso de privacidad</a>
+        {% endif %}
+    </div>
+</div>
+
+{% if messages %}
+{% for message in messages %}
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Error...',
+        text: "{{message}}",
+    })
+</script>
+{% endfor %}
+{% endif %}
+{% endblock %}

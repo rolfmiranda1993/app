@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% blockcontent %}
+<section>
+	<h2>Login Normal </h2>
+	<form method="post" action="">{% csrf_token %}
+		<label for="user">User</label>
+		<input type="text" name="username" placeholder="user">
+		<label for="pass">Password</label>
+		<input type="password" name="password" placeholder="pass">
+		<input type="submit" value="Iniciar">
+	</form>
+</section>
+{% endblock%}
